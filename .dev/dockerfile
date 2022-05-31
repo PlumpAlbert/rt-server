@@ -5,4 +5,4 @@ RUN python -mvenv .venv \
 	&& source .venv/bin/activate \
 	&& pip install -r requirements.txt \
 	&& pip install gunicorn
-CMD [ "gunicorn", "-c", "${GUNICORN_CONFIG}" ]
+CMD [ "/app/.dev/entrypoint.sh" ]
