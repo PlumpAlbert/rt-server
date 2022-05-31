@@ -1,7 +1,9 @@
 FROM python:3.10-alpine
 COPY . /app
 WORKDIR /app
-RUN python -mvenv .venv \
+RUN rm -rf .venv .git \
+	&& chmod a+x /app/.dev/entrypoint.sh \
+	&& python -mvenv .venv \
 	&& source .venv/bin/activate \
 	&& pip install -r requirements.txt \
 	&& pip install gunicorn
