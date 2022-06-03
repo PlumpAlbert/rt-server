@@ -6,17 +6,17 @@ import os
 from dotenv.main import dotenv_values
 
 ENV = {
-  **dotenv_values('.env'),
-  **dotenv_values('.env.local'),
-  **os.environ
+    **dotenv_values('.env'),
+    **dotenv_values('.env.local'),
+    **os.environ
 }
 
 SQLALCHEMY_DATABASE_URI = "%s%s://%s:%s@%s:%s/%s" % (
-  ENV['DB_CONNECTION_DIALECT'],
-  '+%s' % ENV['DB_DRIVER'] if ENV['DB_DRIVER'] else '',
-  ENV['DB_USERNAME'], ENV['DB_PASSWORD'],
-  ENV['DB_HOST'], ENV['DB_PORT'],
-  ENV['DB_DATABASE']
+    ENV['DB_CONNECTION_DIALECT'],
+    '+%s' % ENV['DB_DRIVER'] if ENV['DB_DRIVER'] else '',
+    ENV['DB_USERNAME'], ENV['DB_PASSWORD'],
+    ENV['DB_HOST'], ENV['DB_PORT'],
+    ENV['DB_DATABASE']
 )
 
 CSRF_ENABLED = True
